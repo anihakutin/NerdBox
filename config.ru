@@ -5,3 +5,8 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 run ApplicationController
+use SetupsController
+use HardwaresController
+use ResourcesController
+use UsersController
+use UseRsController
