@@ -1,3 +1,20 @@
-<h1>Welcome to NerdBox!</h1>
-<h2>You are home :)</h2>
- 
+<div class="container">
+    <div class="row">
+      <div class="col 3">
+        <h2 class="font-weight-bold">Hello, <%=@user.username%></h2>
+      </div>
+      <div class="col-9 p-3 mt-2 bg-light text-dark">
+        <% @setups.each do |setup| %>
+        <div class="card mt-2 pl-2" style="width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title"><%= setup.name %></h5>
+            <h6 class="card-subtitle mb-2 text-muted">by <%= setup.user.username %></h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
