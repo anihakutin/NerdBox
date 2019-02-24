@@ -4,27 +4,24 @@
 - Has many Resources
 - Has many Hardwares
 - Has one Setup
-- Has  many Hardware through setup
-- Has many Hardware_setups
+- Has many Hardwares
 
-### Resource: 
+### Resource:
 - Belongs to user
-- Hardware
-- Belongs to user
-- Belongs to setup
-- Setup
+
+### Hardware
+- Belongs to "hardwareable" (polymorphic association)
+
+### Setup
 - Belongs to user
 - Has many hardwares
-- Hardware_setups
-- Belongs to hardware
-- Belongs to setup
 
 ### Models
 - User (Fields: UserName, Email, Password, PasswordDigest)
-- Resource (Fields: Name, link, icon, User_id, rank)
-- Hardware (Fields: Name, images, link, rank)
-- Setup (Fields: Name, images, specs, rank)
-- Hardware_setups (Fields: Setup_id, Hardware_id
+- Resource (Fields: Name, link, icon, rank, user_id)
+- Hardware (Fields: Name, images, buy_link, rank, hardwareable references)
+- Setup (Fields: Name, images, specs, rank, user_id)
+
 ## Views
 ### User
 - Signup
