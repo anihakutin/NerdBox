@@ -1,17 +1,18 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
-  enable :sessions
-  register Sinatra::Flash
-  register Sinatra::ActiveRecordExtension
-  set :session_secret, "youll_never_get_my_a**"
 
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
+    register Sinatra::Flash
+    register Sinatra::ActiveRecordExtension
+    enable :sessions
+    set :session_secret, "youll_never_get_my_a**"
+    set :method_override, true
   end
 
-  get "/index" do
+  get "/" do
     if logged_in?
       @user = current_user
       @setups = Setup.all
