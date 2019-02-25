@@ -17,9 +17,10 @@ class ApplicationController < Sinatra::Base
       # binding.pry
       @user = current_user
       @all = [ ]
-      @all << Resource.all
-      @all << Hardware.all
-      @all << Setup.all
+      User.all.each { |e| @all << e }
+      Resource.all.each { |e| @all << e }
+      Hardware.all.each { |e| @all << e }
+      Setup.all.each { |e| @all << e }
       @all = sort_by_date(@all)
       if @all.first.nil?
         flash[:message_index] = "Much empty here..."
@@ -40,8 +41,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def sort_by_date(arr)
-      binding.pry
-      arr.sort_by { |h| h["created_at"].split('/').reverse }
+      arr.sort_by { |h| h["created_at"].to_s.split('/').reverse }
     end
   end
 
