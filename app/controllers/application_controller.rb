@@ -16,6 +16,9 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       @user = current_user
       @setups = Setup.all
+      if @setups.first.nil?
+        flash[:message_index] = "Much empty here..."
+      end
       erb :index
     else
       redirect "/users/login"

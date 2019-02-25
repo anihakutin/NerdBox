@@ -9,16 +9,17 @@
             Add or Create
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Add resource</a>
+            <a class="dropdown-item" href="#">Add hardware</a>
+            <a class="dropdown-item" href="#">Add setup</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
+            <a class="dropdown-item" href="#">Add hardware to setup</a>
           </div>
         </div>
       </div>
       <div class="col-9 p-3 mt-2 bg-light text-dark">
-        
+        <!-- Show if empty -->
+        <h2 class="font-weight-bold"><%="#{flash[:message_index]}"%></h2>
         <!-- Display setups -->
         <% @setups.each do |setup| %>
         <div class="card mt-2 pl-2" style="width: 100%;">
