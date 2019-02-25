@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+      <div class="col 3">
+        <h2 class="font-weight-bold">Hello, <%=@user.username%></h2>
+        <p><a href="/users/<%=@user.slug%>/edit">View and edit your profile</a></p>
+      </div>
+      <div class="col-9 p-3 mt-2 bg-light text-dark">
+        <div class="card mt-2 pl-2" style="width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title"><%= @user.setup.name %></h5>
+            <h6 class="card-subtitle mb-2 text-muted">by <%= @user.setup.user.username %></h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

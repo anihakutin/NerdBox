@@ -89,7 +89,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE: /users/5/delete
   delete "/users/:id/delete" do
     user = User.find_by_id(params[:id])
     if user && user.authenticate(params[:user][:password_current])
