@@ -14,9 +14,14 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     if logged_in?
+      # binding.pry
       @user = current_user
-      @setups = Setup.all
-      if @setups.first.nil?
+      @all = [ ]
+      @all << Resource.all
+      @all << Hardware.all
+      @all << Setup.all
+      @all = sort_by_date(@all)
+      if @all.first.nil?
         flash[:message_index] = "Much empty here..."
       end
       erb :index
@@ -32,6 +37,11 @@ class ApplicationController < Sinatra::Base
 
     def current_user
       User.find(session[:user_id])
+    end
+
+    def sort_by_date(arr)
+      binding.pry
+      arr.sort_by { |h| h["created_at"].split('/').reverse }
     end
   end
 

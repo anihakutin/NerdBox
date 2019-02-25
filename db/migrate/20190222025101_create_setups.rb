@@ -8,6 +8,7 @@ class CreateSetups < ActiveRecord::Migration
       t.string :specs
       t.string :rank
       t.integer :user_id
+      t.timestamps null: false
     end
   end
 end

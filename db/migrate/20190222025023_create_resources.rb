@@ -6,6 +6,7 @@ class CreateResources < ActiveRecord::Migration
       t.string :icon
       t.integer :rank
       t.integer :user_id
+      t.timestamps null: false
     end
   end
 end

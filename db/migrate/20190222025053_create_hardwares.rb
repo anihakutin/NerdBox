@@ -9,6 +9,7 @@ class CreateHardwares < ActiveRecord::Migration
       t.string :rank
       t.integer :hardwareable_id
       t.string  :hardwareable_type
+      t.timestamps null: false
     end
   end
 end
