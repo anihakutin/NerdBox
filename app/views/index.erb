@@ -17,29 +17,55 @@
           </div>
         </div>
       </div>
-      <div class="col-9 p-3 mt-2 bg-light text-dark">
+      <div class="h-100 col-9 p-3 mt-2 bg-light text-dark pre-scrollable">
         <!-- Show if empty -->
         <h2 class="font-weight-bold"><%="#{flash[:message_index]}"%></h2>
         <!-- Display setups -->
         <% @all.each do |e| %>
+          <!-- User -->
           <% if e.is_a?(User) then %>
             <div class="card mt-2 pl-2" style="width: 100%;">
               <div class="card-body">
                 <h5 class="card-title"><%= e.username %></h5>
                 <h6 class="card-subtitle mb-2 text-muted">Created at: <%= e.created_at %></h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <a href="/users/<%=e.slug%>" class="card-link">View users profile</a>
               </div>
             </div>
+          <!-- Resource -->
           <% elsif e.is_a?(Resource) then %>
             <div class="card mt-2 pl-2" style="width: 100%;">
               <div class="card-body">
                 <h5 class="card-title"><%= e.name %></h5>
                 <h6 class="card-subtitle mb-2 text-muted">by <%= e.user.username %> Created at: <%= e.created_at %></h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <img src="<%=e.icon%>" alt="<%= e.name %>" class="img-thumbnail">
+                <p class="card-text">Rank: <%= e.rank %></p>
+                <a href="<%=e.link%>" class="card-link">Go to resource</a>
+                <a href="/users/<%=e.user.slug%>" class="card-link">View users profile</a>
+              </div>
+            </div>
+          <!-- Hardware -->
+          <% elsif e.is_a?(Hardware) && e.hardwareable.is_a?(User) then %>
+            <div class="card mt-2 pl-2" style="width: 100%;">
+              <div class="card-body">
+                <h5 class="card-title"><%= e.name %></h5>
+
+                <h6 class="card-subtitle mb-2 text-muted">by <%= e.hardwareable.username %> Created at: <%= e.created_at %></h6>
+                <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail">
+                <p class="card-text">Rank: <%= e.rank %></p>
+                <a href="<%=e.link%>" class="card-link">Go to hardware page</a>
+                <a href="/users/<%=e.hardwareable.slug%>" class="card-link">View users profile</a>
+              </div>
+            </div>
+          <!-- Setup -->
+          <% elsif e.is_a?(Setup) then %>
+            <div class="card mt-2 pl-2" style="width: 100%;">
+              <div class="card-body">
+                <h5 class="card-title"><%= e.name %></h5>
+                <h6 class="card-subtitle mb-2 text-muted">by <%= e.user.username %> Created at: <%= e.created_at %></h6>
+                <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail">
+                <p class="card-text">Rank: <%= e.rank %></p>
+                <a href="/setups/<%=e.id%>" class="card-link">View setup page</a>
+                <a href="/users/<%=e.user.slug%>" class="card-link">View users profile</a>
               </div>
             </div>
           <% end %>
