@@ -17,6 +17,9 @@ class HardwaresController < ApplicationController
 
   # GET: /hardwares/5
   get "/hardwares/:id" do
+    @user = current_user
+    @user_show = User.find_by_slug(params[:slug])
+    
     erb :"/hardwares/show.html"
   end
 
