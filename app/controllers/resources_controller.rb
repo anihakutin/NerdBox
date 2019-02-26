@@ -17,6 +17,9 @@ class ResourcesController < ApplicationController
 
   # GET: /resources/5
   get "/resources/:id" do
+    @user = current_user
+    @resource = Resource.find(params[:id])
+
     erb :"/resources/show.html"
   end
 

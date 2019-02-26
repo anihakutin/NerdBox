@@ -1,1 +1,21 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<div class="container">
+    <div class="row">
+      <div class="col 3">
+        <h2 class="font-weight-bold">Hello, <%=@user.username%></h2>
+        <p><a href="/users/<%=@user.slug%>/edit">View and edit your profile</a></p>
+      </div>
+      <div class="h-100 col-9 p-3 mt-2 bg-light text-dark">
+        <h2 class="font-weight-bold">You are viewing <%=@resource.name%></h2>
+        <br>
+          <div class="card mt-2 pl-2" style="width: 100%;">
+            <div class="card-body">
+              <h4 class="card-title">Profile</h4>
+              <h6 class="card-subtitle mb-2 text-muted">by <a href="/users/<%=@resource.user.slug%>"><%=@resource.user.username%></a></h6>
+              <br>
+              <img src="<%=@resource.icon%>" alt="<%= @resource.name %>" class="img-thumbnail m-1">
+              <p class="card-text">Rank: <%= @resource.rank %></p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
