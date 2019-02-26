@@ -50,7 +50,7 @@
                 <h5 class="card-title"><%= e.name %></h5>
 
                 <h6 class="card-subtitle mb-2 text-muted">by <%= e.hardwareable.username %> Created at: <%= e.created_at %></h6>
-                <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail">
+                <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail m-1">
                 <p class="card-text">Rank: <%= e.rank %></p>
                 <a href="<%=e.link%>" class="card-link">Go to hardware page</a>
                 <a href="/users/<%=e.hardwareable.slug%>" class="card-link">View users profile</a>
@@ -62,7 +62,7 @@
               <div class="card-body">
                 <h5 class="card-title"><%= e.name %></h5>
                 <h6 class="card-subtitle mb-2 text-muted">by <%= e.user.username %> Created at: <%= e.created_at %></h6>
-                <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail">
+                <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail m-1">
                 <p class="card-text">Rank: <%= e.rank %></p>
                 <a href="/setups/<%=e.id%>" class="card-link">View setup page</a>
                 <a href="/users/<%=e.user.slug%>" class="card-link">View users profile</a>
