@@ -53,7 +53,8 @@ class UsersController < ApplicationController
 
   # Show - public
   get "/users/:slug" do
-    @user = User.find_by_slug(params[:slug])
+    @user = current_user
+    @user_show = User.find_by_slug(params[:slug])
     erb :"/users/show.html"
   end
 
