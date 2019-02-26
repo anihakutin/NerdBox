@@ -11,10 +11,20 @@
             <div class="card-body">
               <h4 class="card-title">Profile</h4>
               <h6 class="card-subtitle mb-2 text-muted">email: <%= @user_show.email %></h6>
-              <p class="card-text">Resources:</p>
-              <% @user_show.resources.each do |r| %>
-                <a href="<%=r.link%>" class="card-link"><%=r.name%></a>
+              <br>
+              <h6 class="card-title">Resources:</h6>
+              <% @user_show.resources.each do |e| %>
+                <p><a href="/resources/<%=e.id%>" class="card-link"><%=e.name%></a></p>
               <% end %>
+
+              <h6 class="card-title">Hardware:</h6>
+              <% @user_show.hardwares.each do |e| %>
+                <p><a href="/hardwares/<%=e.id%>" class="card-link"><%=e.name%></a></p>
+              <% end %>
+              <% if !@user_show.setup.nil? %>
+              <h6 class="card-title">Setup:</h6>
+                <p><a href="/setups/<%=@user_show.setup.id%>" class="card-link"><%=@user_show.setup.name%></a></p>
+              <% end%>
             </div>
           </div>
       </div>
