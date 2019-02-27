@@ -17,6 +17,9 @@ class SetupsController < ApplicationController
 
   # GET: /setups/5
   get "/setups/:id" do
+    @user = current_user
+    @setup = Setup.find(params[:id])
+
     erb :"/setups/show.html"
   end
 

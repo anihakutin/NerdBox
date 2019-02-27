@@ -3,6 +3,11 @@
   width: auto;
 }
 
+.cust-thumb img  {
+  height: 75px;
+  width: auto;
+}
+
 .container .pre-scrollable {
   max-height: 85vh;
 }
