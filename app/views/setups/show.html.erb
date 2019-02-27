@@ -7,27 +7,25 @@
       <div class="h-100 col-9 p-3 mt-2 bg-light text-dark">
         <h2 class="font-weight-bold">You are viewing <%=@setup.name%></h2>
         <br>
-          <div class="card mt-2 pl-2" style="width: 100%;">
-            <div class="card-body">
-              <h4 class="card-title">Setup Info</h4>
-
-              <h6 class="card-subtitle mb-2 text-muted">by <a href="/users/<%=@setup.user.slug%>"><%=@setup.user.username%></a></h6>
-              <br>
-              <img src="<%=@setup.image1%>" alt="<%= @setup.name %>" class="img-thumbnail m-1"><img src="<%=@setup.image2%>" alt="<%= @setup.name %>" class="img-thumbnail m-1"><img src="<%=@setup.image3%>" alt="<%= @setup.name %>" class="img-thumbnail m-1">
-              <p class="card-text">Rank: <%= @setup.rank %></p>
-
-            <!-- Setup hardwares -->
-              <% @setup.hardwares.each do |e| %>
-                <h5 class="card-title"><%= e.name %></h5>
-                <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail m-1">
-                <p class="card-text">Rank: <%= e.rank %></p>
-                <a href="<%=e.link%>" class="card-link">Go to hardware</a>
-                <a href="/hardwares/<%=e.id%>" class="card-link">View hardware page</a>
-                <br>
-                <br>
-              <% end %>
-            </div>
-          </div>
+        <div class="card mt-2 pl-2" style="width: 100%;">
+      <div class="card-body">
+        <h4 class="card-title">Setup Info</h4>
+          <h6 class="card-subtitle mb-2 text-muted">by <a href="/users/<%=@setup.user.slug%>"><%=@setup.user.username%></a></h6>
+          <br>
+          <img src="<%=@setup.image1%>" alt="<%= @setup.name %>" class="img-thumbnail m-1"><img src="<%=@setup.image2%>" alt="<%= @setup.name %>" class="img-thumbnail m-1"><img src="<%=@setup.image3%>" alt="<%= @setup.name %>" class="img-thumbnail m-1">
+          <p class="card-text">Rank: <%= @setup.rank %></p>
+      <!-- Setup hardwares -->
+        <% @setup.hardwares.each do |e| %>
+          <h5 class="card-title"><%= e.name %></h5>
+          <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail m-1">
+          <p class="card-text">Rank: <%= e.rank %></p>
+          <a href="<%=e.link%>" class="card-link">Go to hardware</a>
+          <a href="/hardwares/<%=e.id%>" class="card-link">View hardware page</a>
+          <br>
+          <br>
+        <% end %>
+        </div>
       </div>
     </div>
   </div>
+</div>
