@@ -2,9 +2,12 @@ class HardwaresController < ApplicationController
 
   # GET: /hardwares
   get "/hardwares" do
+    @user = current_user
+    @hardwares = Hardware.all
+
     erb :"/hardwares/index.html"
   end
-
+ 
   # GET: /hardwares/new
   get "/hardwares/new" do
     erb :"/hardwares/new.html"
