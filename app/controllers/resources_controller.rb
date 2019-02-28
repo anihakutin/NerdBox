@@ -2,6 +2,9 @@ class ResourcesController < ApplicationController
 
   # GET: /resources
   get "/resources" do
+    @user = current_user
+    @resources = Resource.all
+
     erb :"/resources/index.html"
   end
 
