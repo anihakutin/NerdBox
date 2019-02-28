@@ -1,1 +1,19 @@
-<h1>This is the Model's index page.</h1>
+<div class="container">
+    <div class="row">
+      <div class="col 3">
+        <h2 class="font-weight-bold">Hello, <%=@user.username%></h2>
+        <p><a href="/users/<%=@user.slug%>/edit">View and edit your profile</a></p>
+      </div>
+      <div class="h-100 col-9 p-3 mt-2 bg-light text-dark">
+        <% @users.each do |e| %>
+          <div class="card mt-2 pl-2" style="width: 100%;">
+            <div class="card-body">
+              <h5 class="card-title"><%= e.username %></h5>
+              <h6 class="card-subtitle mb-2 text-muted">Created at: <%= e.created_at %></h6>
+              <a href="/users/<%=e.slug%>" class="card-link">View users profile</a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

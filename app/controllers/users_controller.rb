@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  get "/users" do
+    @user = current_user
+    @users = User.all
+
+    erb :"/users/index.html"
+  end
 
   get "/users/signup" do
     flash[:message_signup] = ""
