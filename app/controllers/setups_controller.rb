@@ -2,6 +2,9 @@ class SetupsController < ApplicationController
 
   # GET: /setups
   get "/setups" do
+    @user = current_user
+    @setups = Setup.all
+    
     erb :"/setups/index.html"
   end
 
