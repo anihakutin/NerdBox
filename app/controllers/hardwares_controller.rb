@@ -16,6 +16,7 @@ class HardwaresController < ApplicationController
 
   # POST: /hardwares
   post "/hardwares" do
+
     if logged_in?
 
       # Update Hardware
@@ -46,19 +47,18 @@ class HardwaresController < ApplicationController
       end
 
       hardware.save
+
       if params[:hardware][:hardware] == current_user.slug
         current_user.hardwares << hardware
       else
         current_user.setup.hardwares << hardware
       end
-      
+
       redirect "/hardwares/#{hardware.id}"
     else
       flash[:message_edit] = "Only a page owner can edit thier page"
       redirect "/hardwares/#{params[:id]}"
     end
-
-    redirect "/hardwares"
   end
 
   # GET: /hardwares/5
@@ -84,8 +84,8 @@ class HardwaresController < ApplicationController
 
   # PATCH: /hardwares/5
   patch "/hardwares/:id" do
-    @hardware = Hardware.find(params[:id])
-    if logged_in? && @hardware.hardwareable.id == current_user.id
+    hardware = Hardware.find(params[:id])
+    if logged_in? && current_user.hardwares.include?(hardware)
       # Save images dynamically
       filenames = []
       files = []
@@ -109,7 +109,6 @@ class HardwaresController < ApplicationController
       end
 
       # Update Hardware
-      hardware = Hardware.find(params[:id])
       hardware.name = params[:hardware][:name]
       hardware.rank = params[:hardware][:rank]
       hardware.save
