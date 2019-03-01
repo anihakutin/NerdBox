@@ -23,6 +23,7 @@
               <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail m-1">
               <p class="card-text">Rank: <%= e.rank %></p>
               <a href="<%=e.link%>" class="card-link">Go to hardware</a>
+              <a href="/hardwares/<%=e.id%>" class="card-link">View hardware page</a>
             </div>
           </div>
         <% end %>

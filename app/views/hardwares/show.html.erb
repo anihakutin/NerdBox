@@ -5,6 +5,8 @@
         <p><a href="/users/<%=@user.slug%>/edit">View and edit your profile</a></p>
       </div>
       <div class="h-100 col-9 p-3 mt-2 bg-light text-dark">
+        <%="#{flash[:message_edit]}"%>
+        <br>
         <h2 class="font-weight-bold">You are viewing <%=@hardware.name%></h2>
         <br>
       <div class="card mt-2 pl-2" style="width: 100%;">
