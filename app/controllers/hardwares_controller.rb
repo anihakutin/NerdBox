@@ -10,6 +10,7 @@ class HardwaresController < ApplicationController
 
   # GET: /hardwares/new
   get "/hardwares/new" do
+    @user = current_user
     erb :"/hardwares/new.html"
   end
 
@@ -41,34 +42,41 @@ class HardwaresController < ApplicationController
 
   # PATCH: /hardwares/5
   patch "/hardwares/:id" do
+    @hardware = Hardware.find(params[:id])
+    if logged_in? && @hardware.hardwareable.id == current_user.id
+      # Save images dynamically
+      filenames = []
+      files = []
 
-    # Save images dynamically
-    filenames = []
-    files = []
+      if !params[:file].nil?
+        params[:file].each do |i|
+          filenames << i[1][:filename]
+          files << i[1][:tempfile]
+        end
 
-    params[:file].each do |i|
-      filenames << i[1][:filename]
-      files << i[1][:tempfile]
-    end
-    files.each_with_index do |file, i|
-      File.open("./public/images/#{filenames[i]}", 'wb') do |f|
-        f.write(file.read)
+        files.each_with_index do |file, i|
+          File.open("./public/images/#{filenames[i]}", 'wb') do |f|
+            f.write(file.read)
+          end
+        end
+
+        # Update images dynamically
+        filenames.each_with_index do |filename, i|
+          hardware.send("image#{i+1}=", "/images/#{filename}")
+        end
       end
+
+      # Update Hardware
+      hardware = Hardware.find(params[:id])
+      hardware.name = params[:hardware][:name]
+      hardware.rank = params[:hardware][:rank]
+      hardware.save
+
+      redirect "/hardwares/#{hardware.id}"
+    else
+      flash[:message_edit] = "Only a page owner can edit thier page"
+      redirect "/hardwares/#{params[:id]}"
     end
-
-    # Update Hardware
-    hardware = Hardware.find(params[:id])
-    hardware.name = params[:hardware][:name]
-    hardware.rank = params[:hardware][:rank]
-
-    # Update images dynamically
-    filenames.each_with_index do |filename, i|
-      hardware.send("image#{i+1}=", "/images/#{filename}")
-    end
-
-    hardware.save
-
-    redirect "/hardwares/#{hardware.id}"
   end
 
   # DELETE: /hardwares/5/delete

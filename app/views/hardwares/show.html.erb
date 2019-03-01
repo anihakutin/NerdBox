@@ -23,6 +23,9 @@
           <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1"><img src="<%=@hardware.image2%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1"><img src="<%=@hardware.image3%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
           <p class="card-text">Rank: <%= @hardware.rank %></p>
           <a href="<%=@hardware.link%>" class="card-link">Go to hardware</a>
+          <% if @user.hardwares.include?(@hardware) || @user.setup.hardwares.include?(@hardware)%>
+            <a href="/hardwares/<%=@hardware.id%>/edit" class="card-link">Edit hardware</a>
+          <% end %>
         </div>
       </div>
       </div>
