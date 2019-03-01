@@ -6,11 +6,10 @@
       </div>
       <div class="h-100 col-9 p-3 mt-2 bg-light text-dark">
         <form action="/resources/new" method="post" enctype="multipart/form-data">
-          <h2 class="font-weight-bold">Edit Name: <input type="text" name="resource[name]"</h2>
+          <h2 class="font-weight-bold">Edit Name: <input type="text" name="resource[name]"></h2>
           <br>
           <div class="card mt-2 pl-2" style="width: 100%;">
             <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted">by <a href="/users/<%=@resource.user.slug%>"><%=@resource.user.username%></a></h6>
               <br>
               <img src="/images/blankImage.png" alt="Select Icon To Upload" class="img-thumbnail m-1">
               <input type="file" name="file" value="Select Image To Upload">
