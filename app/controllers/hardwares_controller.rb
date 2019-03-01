@@ -16,6 +16,48 @@ class HardwaresController < ApplicationController
 
   # POST: /hardwares
   post "/hardwares" do
+    if logged_in?
+
+      # Update Hardware
+      hardware = Hardware.create
+      hardware.name = params[:hardware][:name]
+      hardware.rank = params[:hardware][:rank]
+
+      # Save images dynamically
+      filenames = []
+      files = []
+
+      if !params[:file].nil?
+        params[:file].each do |i|
+          filenames << i[1][:filename]
+          files << i[1][:tempfile]
+        end
+
+        files.each_with_index do |file, i|
+          File.open("./public/images/#{filenames[i]}", 'wb') do |f|
+            f.write(file.read)
+          end
+        end
+
+        # Update images dynamically
+        filenames.each_with_index do |filename, i|
+          hardware.send("image#{i+1}=", "/images/#{filename}")
+        end
+      end
+
+      hardware.save
+      if params[:hardware][:hardware] == current_user.slug
+        current_user.hardwares << hardware
+      else
+        current_user.setup.hardwares << hardware
+      end
+      
+      redirect "/hardwares/#{hardware.id}"
+    else
+      flash[:message_edit] = "Only a page owner can edit thier page"
+      redirect "/hardwares/#{params[:id]}"
+    end
+
     redirect "/hardwares"
   end
 
