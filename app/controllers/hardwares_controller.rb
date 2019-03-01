@@ -42,19 +42,30 @@ class HardwaresController < ApplicationController
   # PATCH: /hardwares/5
   patch "/hardwares/:id" do
 
-    # Save image
-    @filename = params[:file][:filename]
-    file = params[:file][:tempfile]
+    # Save images dynamically
+    filenames = []
+    files = []
 
-    File.open("./public/images/#{@filename}", 'wb') do |f|
-      f.write(file.read)
+    params[:file].each do |i|
+      filenames << i[1][:filename]
+      files << i[1][:tempfile]
+    end
+    files.each_with_index do |file, i|
+      File.open("./public/images/#{filenames[i]}", 'wb') do |f|
+        f.write(file.read)
+      end
     end
 
     # Update Hardware
     hardware = Hardware.find(params[:id])
     hardware.name = params[:hardware][:name]
     hardware.rank = params[:hardware][:rank]
-    hardware.image1 = "/images/#{@filename}"
+
+    # Update images dynamically
+    filenames.each_with_index do |filename, i|
+      hardware.send("image#{i+1}=", "/images/#{filename}")
+    end
+
     hardware.save
 
     redirect "/hardwares/#{hardware.id}"

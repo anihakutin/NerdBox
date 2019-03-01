@@ -20,7 +20,13 @@
                 <% end %>
               <br>
               <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
-              <input type="file" name="file" >
+              <input type="file" name="file[image1]" >
+              <br>
+              <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
+              <input type="file" name="file[image2]" >
+              <br>
+              <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
+              <input type="file" name="file[image3]" >
               <br>
 
               <p class="card-text">Change Rank: <input type="text" name="hardware[rank]" value="<%=@hardware.rank%>"></p>
