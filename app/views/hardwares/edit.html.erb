@@ -1,40 +1,32 @@
-<div class="container">
-    <div class="row">
-      <div class="col 3">
-        <h2 class="font-weight-bold">Hello, <%=@user.username%></h2>
-        <p><a href="/users/<%=@user.slug%>/edit">View and edit your profile</a></p>
+<form  action="/hardwares/<%=@hardware.id%>" method="post" enctype="multipart/form-data">
+  <h2 class="font-weight-bold">Edit Name: <input type="text" name="hardware[name]" value="<%=@hardware.name%>"></h2>
+  <br>
+  <div class="card mt-2 pl-2" style="width: 100%;">
+    <div class="card-body">
+      <h4 class="card-title">Hardware Info</h4>
+        <!-- Hardware that belongs to user directly-->
+          <% if @hardware.hardwareable.is_a?(User) then %>
+            <h6 class="card-subtitle mb-2 text-muted">Accessory of <a href="/users/<%=@hardware.hardwareable.slug%>"><%=@hardware.hardwareable.username%></a></h6>
+        <!-- Hardware that belongs to a setup-->
+          <% elsif @hardware.hardwareable.user.is_a?(User) then %>
+            <h6 class="card-subtitle mb-2 text-muted">Part of <a href="/setups/<%=@hardware.hardwareable.id%>"><%=@hardware.hardwareable.name%></a></h6>
+          <% end %>
+        <br>
+        <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
+        <input type="file" name="file[image1]" >
+        <br>
+        <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
+        <input type="file" name="file[image2]" >
+        <br>
+        <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
+        <input type="file" name="file[image3]" >
+        <br>
+        <p class="card-text">Change Rank: <input type="text" name="hardware[rank]" value="<%=@hardware.rank%>"></p>
       </div>
-      <div class="h-100 col-9 p-3 mt-2 bg-light text-dark">
-        <form  action="/hardwares/<%=@hardware.id%>" method="post" enctype="multipart/form-data">
-          <h2 class="font-weight-bold">Edit Name: <input type="text" name="hardware[name]" value="<%=@hardware.name%>"></h2>
-          <br>
-          <div class="card mt-2 pl-2" style="width: 100%;">
-            <div class="card-body">
-              <h4 class="card-title">Hardware Info</h4>
-              <!-- Hardware that belongs to user directly-->
-                <% if @hardware.hardwareable.is_a?(User) then %>
-                  <h6 class="card-subtitle mb-2 text-muted">Accessory of <a href="/users/<%=@hardware.hardwareable.slug%>"><%=@hardware.hardwareable.username%></a></h6>
-              <!-- Hardware that belongs to a setup-->
-                <% elsif @hardware.hardwareable.user.is_a?(User) then %>
-                  <h6 class="card-subtitle mb-2 text-muted">Part of <a href="/setups/<%=@hardware.hardwareable.id%>"><%=@hardware.hardwareable.name%></a></h6>
-                <% end %>
-              <br>
-              <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
-              <input type="file" name="file[image1]" >
-              <br>
-              <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
-              <input type="file" name="file[image2]" >
-              <br>
-              <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
-              <input type="file" name="file[image3]" >
-              <br>
-              <p class="card-text">Change Rank: <input type="text" name="hardware[rank]" value="<%=@hardware.rank%>"></p>
-            </div>
-          </div>
-          <br>
-          <input type="hidden" name="_method" value="patch">
-          <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
-        </form>
       </div>
-    </div>
+      <br>
+      <input type="hidden" name="_method" value="patch">
+      <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
+    </form>
   </div>
+</div>

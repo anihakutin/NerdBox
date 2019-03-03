@@ -1,21 +1,3 @@
-<div class="container">
-    <div class="row">
-      <div class="col 3">
-        <h2 class="font-weight-bold">Hello, <%=@user.username%></h2>
-        <p><a href="/users/<%=@user.slug%>/edit">View and edit your profile</a></p>
-        <!-- Button add -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Add or Create
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="/resources/new">Add resource</a>
-            <a class="dropdown-item" href="/hardwares/new">Add hardware</a>
-            <a class="dropdown-item" href="/setups/new">Add setup</a>
-          </div>
-        </div>
-      </div>
-      <div class="h-100 col-9 p-3 mt-2 bg-light text-dark pre-scrollable">
         <!-- Show if empty -->
         <h2 class="font-weight-bold"><%="#{flash[:message_index]}"%></h2>
         <!-- Display setups -->
@@ -68,4 +50,3 @@
         <% end %>
       </div>
     </div>
-  </div>
