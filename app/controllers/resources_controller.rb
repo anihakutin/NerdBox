@@ -2,10 +2,14 @@ class ResourcesController < ApplicationController
 
   # GET: /resources
   get "/resources" do
-    @user = current_user
-    @resources = Resource.all
+    if logged_in?
+      @user = current_user
+      @resources = Resource.all
 
-    erb :"/resources/index.html"
+      erb :"/resources/index.html"
+    else
+      redirect "/users/login"
+    end
   end
 
   # GET: /resources/new
