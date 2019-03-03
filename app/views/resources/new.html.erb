@@ -1,26 +1,15 @@
-<div class="container">
-    <div class="row">
-      <div class="col 3">
-        <h2 class="font-weight-bold">Hello, <%=@user.username%></h2>
-        <p><a href="/users/<%=@user.slug%>/edit">View and edit your profile</a></p>
-      </div>
-      <div class="h-100 col-9 p-3 mt-2 bg-light text-dark">
-        <form action="/resources" method="post" enctype="multipart/form-data">
-          <h2 class="font-weight-bold">Name: <input type="text" name="resource[name]"></h2>
-          <br>
-          <div class="card mt-2 pl-2" style="width: 100%;">
-            <div class="card-body">
-              <br>
-              <img src="/images/blankImage.png" alt="Select Icon To Upload" class="img-thumbnail m-1">
-              <input type="file" name="file" value="Select Image To Upload">
-              <p class="card-text">Link: <input type="text" name="resource[link]"></p>
-              <p class="card-text">Rank: <input type="text" name="resource[rank]"></p>
-            </div>
-          </div>
-          <br>
-          <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
-        </form>
-
-      </div>
+<form action="/resources" method="post" enctype="multipart/form-data">
+  <h2 class="font-weight-bold">Name: <input type="text" name="resource[name]"></h2>
+  <br>
+  <div class="card mt-2 pl-2" style="width: 100%;">
+    <div class="card-body">
+      <br>
+      <img src="/images/blankImage.png" alt="Select Icon To Upload" class="img-thumbnail m-1">
+      <input type="file" name="file" value="Select Image To Upload">
+      <p class="card-text">Link: <input type="text" name="resource[link]"></p>
+      <p class="card-text">Rank: <input type="text" name="resource[rank]"></p>
     </div>
   </div>
+  <br>
+  <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
+</form>
