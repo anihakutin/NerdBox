@@ -1,26 +1,16 @@
-<div class="container">
-    <div class="row">
-      <div class="col 3">
-        <h2 class="font-weight-bold">Hello, <%=@user.username%></h2>
-        <p><a href="/users/<%=@user.slug%>/edit">View and edit your profile</a></p>
-      </div>
-      <div class="h-100 col-9 p-3 mt-2 bg-light text-dark">
-        <% @resources.each do |e| %>
-          <br>
-          <h2 class="font-weight-bold"> <%=e.name%></h2>
-          <br>
-          <div class="card mt-2 pl-2" style="width: 100%;">
-            <div class="card-body">
-              <h4 class="card-title">Resource Info</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Accessory of <a href="/users/<%=e.user.slug%>"><%=e.user.username%></a></h6>
-              <br>
-              <img src="<%=e.icon%>" alt="<%= e.name %>" class="img-thumbnail m-1">
-              <p class="card-text">Rank: <%= e.rank %></p>
-              <a href="<%=e.link%>" class="card-link">Go to resource </a>
-              <a href="/resources/<%=e.id%>"> View Resource Page</a>
-            </div>
-          </div>
-        <% end %>
-      </div>
+<% @resources.each do |e| %>
+  <br>
+  <h2 class="font-weight-bold"> <%=e.name%></h2>
+  <br>
+  <div class="card mt-2 pl-2" style="width: 100%;">
+    <div class="card-body">
+      <h4 class="card-title">Resource Info</h4>
+      <h6 class="card-subtitle mb-2 text-muted">Accessory of <a href="/users/<%=e.user.slug%>"><%=e.user.username%></a></h6>
+      <br>
+      <img src="<%=e.icon%>" alt="<%= e.name %>" class="img-thumbnail m-1">
+      <p class="card-text">Rank: <%= e.rank %></p>
+      <a href="<%=e.link%>" class="card-link">Go to resource </a>
+      <a href="/resources/<%=e.id%>"> View Resource Page</a>
     </div>
   </div>
+<% end %>
