@@ -5,7 +5,9 @@
     <div class="card-body">
       <p>Belong to:</p>
       <h6 class="card-subtitle mb-2 text-muted"><input type="radio" name="hardware[hardware]" value="<%=@user.slug%>"> Me</h6>
-      <h6 class="card-subtitle mb-2 text-muted"><input type="radio" name="hardware[hardware]" value="<%=@user.setup.id%>"> My Setup</h6>
+      <% if !@user.setup.nil? %>
+        <h6 class="card-subtitle mb-2 text-muted"><input type="radio" name="hardware[hardware]" value="<%=@user.setup.id%>"> My Setup</h6>
+      <% end %>
       <br>
       <img src="/images/blankImage.png" alt="Select image to upload" class="img-thumbnail m-1">
       <input type="file" name="file[image1]" >
