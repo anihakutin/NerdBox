@@ -1,32 +1,22 @@
-<div class="container">
-    <div class="row">
-      <div class="col 3">
-        <h2 class="font-weight-bold">Hello, <%=@user.username%></h2>
-        <p><a href="/users/<%=@user.slug%>/edit">View and edit your profile</a></p>
-      </div>
-      <div class="h-100 col-9 p-3 mt-2 bg-light text-dark">
-        <% @hardwares.each do |e| %>
-          <br>
-          <h2 class="font-weight-bold"> <%=e.name%></h2>
-          <br>
-          <div class="card mt-2 pl-2" style="width: 100%;">
-            <div class="card-body">
-              <h4 class="card-title">Hardware Info</h4>
-              <!-- Hardware that belongs to user directly-->
-                <% if e.hardwareable.is_a?(User) then %>
-                  <h6 class="card-subtitle mb-2 text-muted">Accessory of <a href="/users/<%=e.hardwareable.slug%>"><%=e.hardwareable.username%></a></h6>
-              <!-- Hardware that belongs to a setup-->
-                <% elsif e.hardwareable.user.is_a?(User) then %>
-                  <h6 class="card-subtitle mb-2 text-muted">Part of <a href="/setups/<%=e.hardwareable.id%>"><%=e.hardwareable.name%></a></h6>
-                <% end %>
-              <br>
-              <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail m-1">
-              <p class="card-text">Rank: <%= e.rank %></p>
-              <a href="<%=e.link%>" class="card-link">Go to hardware</a>
-              <a href="/hardwares/<%=e.id%>" class="card-link">View hardware page</a>
-            </div>
-          </div>
+<% @hardwares.each do |e| %>
+  <br>
+  <h2 class="font-weight-bold"> <%=e.name%></h2>
+  <br>
+  <div class="card mt-2 pl-2" style="width: 100%;">
+    <div class="card-body">
+      <h4 class="card-title">Hardware Info</h4>
+      <!-- Hardware that belongs to user directly-->
+        <% if e.hardwareable.is_a?(User) then %>
+          <h6 class="card-subtitle mb-2 text-muted">Accessory of <a href="/users/<%=e.hardwareable.slug%>"><%=e.hardwareable.username%></a></h6>
+      <!-- Hardware that belongs to a setup-->
+        <% elsif e.hardwareable.user.is_a?(User) then %>
+          <h6 class="card-subtitle mb-2 text-muted">Part of <a href="/setups/<%=e.hardwareable.id%>"><%=e.hardwareable.name%></a></h6>
         <% end %>
-      </div>
+      <br>
+      <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail m-1">
+      <p class="card-text">Rank: <%= e.rank %></p>
+      <a href="<%=e.link%>" class="card-link">Go to hardware</a>
+      <a href="/hardwares/<%=e.id%>" class="card-link">View hardware page</a>
     </div>
   </div>
+<% end %>
