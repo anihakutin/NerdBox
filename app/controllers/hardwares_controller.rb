@@ -2,10 +2,15 @@ class HardwaresController < ApplicationController
 
   # GET: /hardwares
   get "/hardwares" do
-    @user = current_user
-    @hardwares = Hardware.all
+    if logged_in?
+      @user = current_user
+      @hardwares = Hardware.all
 
-    erb :"/hardwares/index.html"
+      erb :"/hardwares/index.html"
+    else
+      redirect "/users/login"
+    end
+
   end
 
   # GET: /hardwares/new
