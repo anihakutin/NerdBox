@@ -1,50 +1,40 @@
-<div class="container pb-4">
-    <div class="row">
-      <div class="col 3">
-        <h2 class="font-weight-bold">Hello, <%=@user.username%></h2>
-      </div>
+<div class="card mt-2 pl-2" style="width: 100%;">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted"></h6>
 
-      <div class="col-9 p-3 mt-2 bg-light text-dark">
-        <div class="card mt-2 pl-2" style="width: 100%;">
-          <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted"></h6>
-
-            <form action="/users/<%=@user.id%>" method="post">
-              <%="#{flash[:message_edit]}"%>
-              <br>
-              <div class="form-group">
-                <h2 class="font-weight-bold">Edit Account Details</h2>
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="user[username]" aria-describedby="usernameHelp" placeholder="Current: <%=@user.username%>">
-                <small id="usernameHelp" class="form-text text-muted">Make it memorable, you'll be using it to login.</small>
-                <br>
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" name="user[email]" aria-describedby="emailHelp" placeholder="Current: <%=@user.email%>">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-              </div>
-              <div class="form-group">
-                <label for="password">Current Password</label>
-                <input type="password" class="form-control" id="password" name="user[password_current]" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <label for="password">New Password</label>
-                <input type="password" class="form-control" id="password" name="user[password_new]" placeholder="Password">
-              </div>
-              <input type="hidden" name="_method" value="patch">
-              <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
-            </form>
-            <br>
-            <form class="form-group mt-2" action="/users/<%=@user.id%>/delete" method="post">
-              <div class="form-group">
-                <h2 class="font-weight-bold">Delete Account</h2>
-                <label for="password">Current Password</label>
-                <input type="password" class="form-control" id="password" name="user[password_current]" placeholder="Password">
-              </div>
-              <input type="hidden" name="_method" value="delete">
-              <button type="submit" name="submit" class="btn btn-danger">Delete Account</button>
-            </form>
-          </div>
-        </div>
+    <form action="/users/<%=@user.id%>" method="post">
+      <%="#{flash[:message_edit]}"%>
+      <br>
+      <div class="form-group">
+        <h2 class="font-weight-bold">Edit Account Details</h2>
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="user[username]" aria-describedby="usernameHelp" placeholder="Current: <%=@user.username%>">
+        <small id="usernameHelp" class="form-text text-muted">Make it memorable, you'll be using it to login.</small>
+        <br>
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" name="user[email]" aria-describedby="emailHelp" placeholder="Current: <%=@user.email%>">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
-    </div>
+      <div class="form-group">
+        <label for="password">Current Password</label>
+        <input type="password" class="form-control" id="password" name="user[password_current]" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="password">New Password</label>
+        <input type="password" class="form-control" id="password" name="user[password_new]" placeholder="Password">
+      </div>
+      <input type="hidden" name="_method" value="patch">
+      <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+    <br>
+    <form class="form-group mt-2" action="/users/<%=@user.id%>/delete" method="post">
+      <div class="form-group">
+        <h2 class="font-weight-bold">Delete Account</h2>
+        <label for="password">Current Password</label>
+        <input type="password" class="form-control" id="password" name="user[password_current]" placeholder="Password">
+      </div>
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit" name="submit" class="btn btn-danger">Delete Account</button>
+    </form>
   </div>
+</div>
