@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
   get "/users" do
-    @user = current_user
-    @users = User.all
+    if logged_in?
+      @user = current_user
+      @users = User.all
 
-    erb :"/users/index.html"
+      erb :"/users/index.html"
+    else
+      redirect "/users/login"
+    end
   end
 
   get "/users/signup" do
