@@ -26,7 +26,7 @@ class ResourcesController < ApplicationController
         f.write(file.read)
       end
 
-      resource.create
+      resource = Resource.create
       # Update icon
       resource.icon = "/images/#{filename}"
       # Update Hardware

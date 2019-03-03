@@ -5,8 +5,8 @@
         <p><a href="/users/<%=@user.slug%>/edit">View and edit your profile</a></p>
       </div>
       <div class="h-100 col-9 p-3 mt-2 bg-light text-dark">
-        <form action="/resources/new" method="post" enctype="multipart/form-data">
-          <h2 class="font-weight-bold">Edit Name: <input type="text" name="resource[name]"></h2>
+        <form action="/resources" method="post" enctype="multipart/form-data">
+          <h2 class="font-weight-bold">Name: <input type="text" name="resource[name]"></h2>
           <br>
           <div class="card mt-2 pl-2" style="width: 100%;">
             <div class="card-body">
