@@ -1,21 +1,21 @@
 <form action="/setups" method="post" enctype="multipart/form-data">
-  <h2 class="font-weight-bold">Name: <input type="text" name="setup[name]"></h2>
+  <h2 class="font-weight-bold">Name: <input type="text" name="setup[name]" required></h2>
   <br>
   <div class="card mt-2 pl-2" style="width: 100%;">
     <div class="card-body">
       <h4 class="card-title">Setup Info</h4>
       <br>
       <img src="/images/blankImage.png" alt="Select Image To Upload" class="img-thumbnail m-1">
-      <input type="file" name="file[image1]">
+      <input type="file" name="file[image1]" required>
       <br>
       <img src="/images/blankImage.png" alt="Select Image To Upload" class="img-thumbnail m-1">
-      <input type="file" name="file[image2]">
+      <input type="file" name="file[image2]" required>
       <br>
       <img src="/images/blankImage.png" alt="Select Image To Upload" class="img-thumbnail m-1">
-      <input type="file" name="file[image3]">
+      <input type="file" name="file[image3]" required>
       <br>
       <br>
-      <p class="card-text">Rank: <input type="text" name="setup[rank]"></p>
+      <p class="card-text">Rank: <input type="text" name="setup[rank]" required></p>
       <br>
       <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
     </div>
