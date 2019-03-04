@@ -22,20 +22,24 @@ class ResourcesController < ApplicationController
   # POST: /resources
   post "/resources" do
     if logged_in?
-      # Save images
-      filename = params[:file][:filename]
-      file = params[:file][:tempfile]
+      resource = Resource.create
 
-      File.open("./public/images/#{filename}", 'wb') do |f|
-        f.write(file.read)
+      # Save images
+      if !params[:file].nil?
+        filename = params[:file][:filename]
+        file = params[:file][:tempfile]
+
+        File.open("./public/images/#{filename}", 'wb') do |f|
+          f.write(file.read)
+        end
+
+        # Update icon
+        resource.icon = "/images/#{filename}"
       end
 
-      resource = Resource.create
-      # Update icon
-      resource.icon = "/images/#{filename}"
       # Update Hardware
       resource.name = params[:resource][:name]
-      resource.link = params[:resource][:name]
+      resource.link = params[:resource][:link]
       resource.rank = params[:resource][:rank]
       resource.save
 
@@ -99,7 +103,7 @@ class ResourcesController < ApplicationController
   delete "/resources/:id/delete" do
     resource = Resource.find(params[:id])
     resource.destroy
-    
+
     redirect "/resources"
   end
 end
