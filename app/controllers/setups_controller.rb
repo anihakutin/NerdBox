@@ -119,6 +119,10 @@ class SetupsController < ApplicationController
 
   # DELETE: /setups/5/delete
   delete "/setups/:id/delete" do
+    setup = Setup.find(params[:id])
+    setup.hardwares.each {|s| s.destroy}
+    setup.destroy
+
     redirect "/setups"
   end
 end

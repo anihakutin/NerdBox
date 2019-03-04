@@ -1,5 +1,5 @@
 <form action="/setups/<%=@setup.id%>" method="post" enctype="multipart/form-data">
-  <h2 class="font-weight-bold">Edit Name:<input type="text" name="setup[name]" value="<%=@setup.name%>"></h2>
+  <h2 class="font-weight-bold">Edit Name: <input type="text" name="setup[name]" value="<%=@setup.name%>"></h2>
   <br>
   <div class="card mt-2 pl-2" style="width: 100%;">
     <div class="card-body">
@@ -15,9 +15,18 @@
       <img src="<%=@setup.image3%>" alt="<%= @setup.name %>" class="img-thumbnail m-1">
       <input type="file" name="file[image3]">
       <br>
+      <br>
       <p class="card-text">Rank: <input type="text" name="setup[rank]" value="<%=@setup.rank%>"></p>
       <input type="hidden" name="_method" value="patch">
       <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
     </div>
   </div>
+</form>
+<br>
+<form class="form-group mt-2" action="/setups/<%=@setup.id%>/delete" method="post">
+  <div class="form-group">
+    <h2 class="font-weight-bold">Delete Setup</h2>
+  </div>
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" name="submit" class="btn btn-danger">Delete <%=@setup.name%> and Associated Hardware</button>
 </form>
