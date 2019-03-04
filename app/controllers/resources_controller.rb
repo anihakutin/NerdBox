@@ -75,15 +75,18 @@ class ResourcesController < ApplicationController
 
     if logged_in? && current_user.resources.include?(resource)
       # Save images
-      filename = params[:file][:filename]
-      file = params[:file][:tempfile]
+      if !params[:file].nil?
+        filename = params[:file][:filename]
+        file = params[:file][:tempfile]
 
-      File.open("./public/images/#{filename}", 'wb') do |f|
-        f.write(file.read)
+        File.open("./public/images/#{filename}", 'wb') do |f|
+          f.write(file.read)
+        end
+
+        # Update icon
+        resource.icon = "/images/#{filename}"
       end
-
-      # Update icon
-      resource.icon = "/images/#{filename}"
+      
       # Update Hardware
       resource.name = params[:resource][:name]
       resource.link = params[:resource][:name]
