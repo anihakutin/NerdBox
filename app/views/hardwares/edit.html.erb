@@ -1,5 +1,5 @@
 <form  action="/hardwares/<%=@hardware.id%>" method="post" enctype="multipart/form-data">
-  <h2 class="font-weight-bold">Edit Name: <input type="text" name="hardware[name]" value="<%=@hardware.name%>"></h2>
+  <h2 class="font-weight-bold">Edit Name: <input type="text" name="hardware[name]" value="<%=@hardware.name%>" required></h2>
   <br>
   <div class="card mt-2 pl-2" style="width: 100%;">
     <div class="card-body">
@@ -13,15 +13,15 @@
           <% end %>
         <br>
         <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
-        <input type="file" name="file[image1]" >
+        <input type="file" name="file[image1]" required>
         <br>
         <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
-        <input type="file" name="file[image2]" >
+        <input type="file" name="file[image2]" required>
         <br>
         <img src="<%=@hardware.image1%>" alt="<%= @hardware.name %>" class="img-thumbnail m-1">
-        <input type="file" name="file[image3]" >
+        <input type="file" name="file[image3]" required>
         <br>
-        <p class="card-text">Change Rank: <input type="text" name="hardware[rank]" value="<%=@hardware.rank%>"></p>
+        <p class="card-text">Change Rank: <input type="text" name="hardware[rank]" value="<%=@hardware.rank%>" required></p>
       </div>
       </div>
       <br>

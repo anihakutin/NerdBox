@@ -88,7 +88,6 @@ class HardwaresController < ApplicationController
   patch "/hardwares/:id" do
     hardware = Hardware.find(params[:id])
     if logged_in?
-      
       # Save images dynamically
       if !params[:file].nil?
         filenames = []
