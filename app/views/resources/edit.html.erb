@@ -1,17 +1,17 @@
 <div class="h-100 col-9 p-3 mt-2 bg-light text-dark">
 <form action="/resources/<%=@resource.id%>" method="post" enctype="multipart/form-data">
-  <h2 class="font-weight-bold">Edit Name: <input type="text" name="resource[name]" value="<%=@resource.name%>"></h2>
+  <h2 class="font-weight-bold">Edit Name: <input type="text" name="resource[name]" value="<%=@resource.name%>" required></h2>
   <br>
   <div class="card mt-2 pl-2" style="width: 100%;">
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted">by <a href="/users/<%=@resource.user.slug%>"><%=@resource.user.username%></a></h6>
       <br>
       <img src="<%=@resource.icon%>" alt="<%= @resource.name %>" class="img-thumbnail m-1">
-      <input type="file" name="file" value="Select Image To Upload">
+      <input type="file" name="file" value="Select Image To Upload" required>
       <br>
       <br>
-      <p class="card-text">Link: <input type="text" name="resource[link]" value="<%= @resource.link %>"></p>
-      <p class="card-text">Rank: <input type="text" name="resource[rank]" value="<%= @resource.rank %>"></p>
+      <p class="card-text">Link: <input type="text" name="resource[link]" value="<%= @resource.link %>" required></p>
+      <p class="card-text">Rank: <input type="text" name="resource[rank]" value="<%= @resource.rank %>" required></p>
     </div>
   </div>
   <br>
