@@ -5,7 +5,7 @@
   <div class="card-body">
     <h4 class="card-title">Setup Info</h4>
     <h6 class="card-subtitle mb-2 text-muted">by <a href="/users/<%=@setup.user.slug%>"><%=@setup.user.username%></a></h6>
-    <% if @user.setup.id == @setup.id%>
+    <% if !@user.setup.nil? && @user.setup.id == @setup.id%>
       <a href="/setups/<%=@setup.id%>/edit" class="card-link">Edit setup</a>
     <% end %>
     <br>
