@@ -1,14 +1,16 @@
-
 <h2 class="font-weight-bold">You are viewing <%=@setup.name%></h2>
-  <br>
-  <div class="card mt-2 pl-2" style="width: 100%;">
-    <div class="card-body">
-      <h4 class="card-title">Setup Info</h4>
-      <h6 class="card-subtitle mb-2 text-muted">by <a href="/users/<%=@setup.user.slug%>"><%=@setup.user.username%></a></h6>
-      <br>
-      <img src="<%=@setup.image1%>" alt="<%= @setup.name %>" class="img-thumbnail m-1"><img src="<%=@setup.image2%>" alt="<%= @setup.name %>" class="img-thumbnail m-1"><img src="<%=@setup.image3%>" alt="<%= @setup.name %>" class="img-thumbnail m-1">
-      <p class="card-text">Rank: <%= @setup.rank %></p>
-  <!-- Setup hardwares -->
+<br>
+<div class="card mt-2 pl-2" style="width: 100%;">
+  <div class="card-body">
+    <h4 class="card-title">Setup Info</h4>
+    <h6 class="card-subtitle mb-2 text-muted">by <a href="/users/<%=@setup.user.slug%>"><%=@setup.user.username%></a></h6>
+    <% if @user.setup.id == @setup.id%>
+      <a href="/setups/<%=@setup.id%>/edit" class="card-link">Edit setup</a>
+    <% end %>
+    <br>
+    <img src="<%=@setup.image1%>" alt="<%= @setup.name %>" class="img-thumbnail m-1"><img src="<%=@setup.image2%>" alt="<%= @setup.name %>" class="img-thumbnail m-1"><img src="<%=@setup.image3%>" alt="<%= @setup.name %>" class="img-thumbnail m-1">
+    <p class="card-text">Rank: <%= @setup.rank %></p>
+<!-- Setup hardwares -->
     <% @setup.hardwares.each do |e| %>
       <h5 class="card-title"><%= e.name %></h5>
       <img src="<%=e.image1%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image2%>" alt="<%= e.name %>" class="img-thumbnail m-1"><img src="<%=e.image3%>" alt="<%= e.name %>" class="img-thumbnail m-1">
@@ -18,5 +20,5 @@
       <br>
       <br>
     <% end %>
-    </div>
   </div>
+</div>

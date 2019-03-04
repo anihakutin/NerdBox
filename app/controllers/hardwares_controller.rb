@@ -20,7 +20,6 @@ class HardwaresController < ApplicationController
 
   # POST: /hardwares
   post "/hardwares" do
-
     if logged_in?
 
       # Update Hardware
@@ -75,9 +74,8 @@ class HardwaresController < ApplicationController
 
   # GET: /hardwares/5/edit
   get "/hardwares/:id/edit" do
-    # .hardwareable.is_a?(User)
     @hardware = Hardware.find(params[:id])
-    if logged_in? && @hardware.hardwareable.id == current_user.id
+    if logged_in?
       @user = current_user
       erb :"/hardwares/edit.html"
     else
@@ -89,7 +87,7 @@ class HardwaresController < ApplicationController
   # PATCH: /hardwares/5
   patch "/hardwares/:id" do
     hardware = Hardware.find(params[:id])
-    if logged_in? && current_user.hardwares.include?(hardware)
+    if logged_in?
       # Save images dynamically
       filenames = []
       files = []
