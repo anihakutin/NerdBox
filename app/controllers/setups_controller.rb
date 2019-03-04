@@ -33,10 +33,10 @@ class SetupsController < ApplicationController
       setup.user_id = current_user.id
 
       # Save images dynamically
-      filenames = []
-      files = []
-
       if !params[:file].nil?
+        filenames = []
+        files = []
+
         params[:file].each do |i|
           filenames << i[1][:filename]
           files << i[1][:tempfile]
