@@ -10,7 +10,6 @@ class HardwaresController < ApplicationController
     else
       redirect "/users/login"
     end
-
   end
 
   # GET: /hardwares/new
