@@ -124,6 +124,9 @@ class HardwaresController < ApplicationController
 
   # DELETE: /hardwares/5/delete
   delete "/hardwares/:id/delete" do
+    hardware = Hardware.find(params[:id])
+    hardware.destroy
+    
     redirect "/hardwares"
   end
 end
