@@ -28,10 +28,10 @@ class HardwaresController < ApplicationController
       hardware.rank = params[:hardware][:rank]
 
       # Save images dynamically
-      filenames = []
-      files = []
-
       if !params[:file].nil?
+        filenames = []
+        files = []
+
         params[:file].each do |i|
           filenames << i[1][:filename]
           files << i[1][:tempfile]
@@ -88,11 +88,12 @@ class HardwaresController < ApplicationController
   patch "/hardwares/:id" do
     hardware = Hardware.find(params[:id])
     if logged_in?
+      
       # Save images dynamically
-      filenames = []
-      files = []
-
       if !params[:file].nil?
+        filenames = []
+        files = []
+
         params[:file].each do |i|
           filenames << i[1][:filename]
           files << i[1][:tempfile]
@@ -126,7 +127,7 @@ class HardwaresController < ApplicationController
   delete "/hardwares/:id/delete" do
     hardware = Hardware.find(params[:id])
     hardware.destroy
-    
+
     redirect "/hardwares"
   end
 end
