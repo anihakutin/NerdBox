@@ -4,12 +4,12 @@
     <div class="card-body">
       <h4 class="card-title">Resource</h4>
       <h6 class="card-subtitle mb-2 text-muted">by <a href="/users/<%=@resource.user.slug%>"><%=@resource.user.username%></a></h6>
+      <% if @user.resources.include?(@resource) %>
+        <a href="/resources/<%=@resource.id%>/edit" class="card-link">Edit resource</a>
+      <% end %>
       <br>
       <img src="<%=@resource.icon%>" alt="<%= @resource.name %>" class="img-thumbnail m-1">
       <p class="card-text">Rank: <%= @resource.rank %></p>
       <a href="<%=@resource.link%>" class="card-link">Go to resource</a>
-      <% if @user.resources.include?(@resource) %>
-        <a href="/resources/<%=@resource.id%>/edit" class="card-link">Edit resource</a>
-      <% end %>
     </div>
   </div>
