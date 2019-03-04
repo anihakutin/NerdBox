@@ -30,6 +30,7 @@ class SetupsController < ApplicationController
       setup = Setup.create
       setup.name = params[:setup][:name]
       setup.rank = params[:setup][:rank]
+      setup.user_id = current_user.id
 
       # Save images dynamically
       filenames = []
@@ -54,7 +55,6 @@ class SetupsController < ApplicationController
       end
 
       setup.save
-      setup.user_id = current_user.id
 
       redirect "/setups/#{setup.id}"
     else
