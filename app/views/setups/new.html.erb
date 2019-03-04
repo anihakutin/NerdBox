@@ -1,22 +1,22 @@
 <form action="/setups" method="post" enctype="multipart/form-data">
-  <h2 class="font-weight-bold">Name:<input type="text" name="setup[name]" value="<%=@setup.name%>"></h2>
+  <h2 class="font-weight-bold">Name: <input type="text" name="setup[name]"></h2>
   <br>
   <div class="card mt-2 pl-2" style="width: 100%;">
     <div class="card-body">
       <h4 class="card-title">Setup Info</h4>
-      <h6 class="card-subtitle mb-2 text-muted">by <a href="/users/<%=@setup.user.slug%>"><%=@setup.user.username%></a></h6>
       <br>
-      <img src="<%=@setup.image1%>" alt="<%= @setup.name %>" class="img-thumbnail m-1">
+      <img src="/images/blankImage.png" alt="Select Image To Upload" class="img-thumbnail m-1">
       <input type="file" name="file[image1]">
       <br>
-      <img src="<%=@setup.image2%>" alt="<%= @setup.name %>" class="img-thumbnail m-1">
+      <img src="/images/blankImage.png" alt="Select Image To Upload" class="img-thumbnail m-1">
       <input type="file" name="file[image2]">
       <br>
-      <img src="<%=@setup.image3%>" alt="<%= @setup.name %>" class="img-thumbnail m-1">
+      <img src="/images/blankImage.png" alt="Select Image To Upload" class="img-thumbnail m-1">
       <input type="file" name="file[image3]">
       <br>
-      <p class="card-text">Rank: <input type="text" name="setup[rank]" value="<%=@setup.rank%>"></p>
-      <input type="hidden" name="_method" value="patch">
+      <br>
+      <p class="card-text">Rank: <input type="text" name="setup[rank]"></p>
+      <br>
       <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
     </div>
   </div>

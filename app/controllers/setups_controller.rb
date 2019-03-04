@@ -14,11 +14,53 @@ class SetupsController < ApplicationController
 
   # GET: /setups/new
   get "/setups/new" do
-    erb :"/setups/new.html"
+    @user = current_user
+
+    if logged_in? && @user.setup.nil?
+      erb :"/setups/new.html"
+    else
+      flash[:message_edit] = "A user may only have one setup"
+      redirect "/setups/#{@user.setup.id}"
+    end
   end
 
   # POST: /setups
   post "/setups" do
+    if logged_in?
+      setup = Setup.create
+      setup.name = params[:setup][:name]
+      setup.rank = params[:setup][:rank]
+
+      # Save images dynamically
+      filenames = []
+      files = []
+
+      if !params[:file].nil?
+        params[:file].each do |i|
+          filenames << i[1][:filename]
+          files << i[1][:tempfile]
+        end
+
+        files.each_with_index do |file, i|
+          File.open("./public/images/#{filenames[i]}", 'wb') do |f|
+            f.write(file.read)
+          end
+        end
+
+        # Update images dynamically
+        filenames.each_with_index do |filename, i|
+          setup.send("image#{i+1}=", "/images/#{filename}")
+        end
+      end
+
+      setup.save
+      setup.user_id = current_user.id
+
+      redirect "/setups/#{setup.id}"
+    else
+      flash[:message_edit] = "Only a page owner can edit thier page"
+      redirect "/setups/#{params[:id]}"
+    end
     redirect "/setups"
   end
 
@@ -42,6 +84,8 @@ class SetupsController < ApplicationController
   patch "/setups/:id" do
     setup = Setup.find(params[:id])
     if logged_in?
+      setup.name = params[:setup][:name]
+      setup.rank = params[:setup][:rank]
       # Save images dynamically
       filenames = []
       files = []
@@ -64,9 +108,6 @@ class SetupsController < ApplicationController
         end
       end
 
-      # Update Hardware
-      setup.name = params[:setup][:name]
-      setup.rank = params[:setup][:rank]
       setup.save
 
       redirect "/setups/#{setup.id}"
