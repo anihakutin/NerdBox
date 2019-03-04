@@ -97,6 +97,9 @@ class ResourcesController < ApplicationController
 
   # DELETE: /resources/5/delete
   delete "/resources/:id/delete" do
+    resource = Resource.find(params[:id])
+    resource.destroy
+    
     redirect "/resources"
   end
 end
